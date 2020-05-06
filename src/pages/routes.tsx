@@ -2,21 +2,30 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 
 import { DashboardPage, LoginPage } from 'pages';
-import { onlyAnon, onlyFor } from 'features/user';
+import { onlyAnon, onlyUsers } from 'features/user';
 
 export const ROUTES = {
   login: {
+    name: 'Login',
     path: '/',
     component: LoginPage,
     guards: [onlyAnon()],
   },
-  dashboard: {
-    path: '/',
+  projects: {
+    name: 'Projects',
+    path: '/projects',
     component: DashboardPage,
-    guards: [onlyFor(['CLIENT', 'ADMIN'])],
+    guards: [onlyUsers()],
   },
-  notFound: {
-    component: () => <Redirect to="/" />,
+  notFoundForUsers: {
+    component: () => <Redirect to="/projects" />,
+    guards: [onlyUsers()],
     path: '*',
   },
+  notFoundForAnon: {
+    component: () => <Redirect to="/" />,
+    guards: [onlyAnon()],
+    path: '*',
+  },
+
 };

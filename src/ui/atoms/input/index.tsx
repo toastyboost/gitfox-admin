@@ -15,9 +15,10 @@ type DefaultFieldProps = {
     suffix?: React.ReactNode | string;
     size?: 'large' | 'small';
   };
+  style: object;
 };
 
-export const Input = ({ store, config }: DefaultFieldProps) => {
+export const Input = ({ store, config, style }: DefaultFieldProps) => {
   const { label, required, name, placeholder, prefix, suffix, size, type } = config;
   const { $value, $error, changed } = store;
 
@@ -48,6 +49,7 @@ export const Input = ({ store, config }: DefaultFieldProps) => {
         placeholder={placeholder}
         size={size}
         onChange={handleChange}
+        style={style}
       />
     </Form.Item>
   );

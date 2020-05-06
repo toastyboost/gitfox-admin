@@ -6,8 +6,13 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
+    "noImplicitAny": false,
     "jsx": "react",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -17,9 +22,23 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es6",
-    "typeRoots": ["./node_modules/@types"],
-    "types": ["styled-components", "react", "react-dom", "react-router-dom"]
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "styled-components",
+      "react",
+      "react-dom",
+      "react-router-dom"
+    ]
   },
-  "exclude": ["./node_modules", "./public", "./build"],
-  "include": ["src"]
+  "exclude": [
+    "./node_modules",
+    "./public",
+    "./build",
+    ".src/sdk.js"
+  ],
+  "include": [
+    "src"
+  ]
 }

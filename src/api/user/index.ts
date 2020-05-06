@@ -1,9 +1,34 @@
 import { request } from 'lib/request';
 
-export type Roles = 'USER' | 'CLIENT' | 'ADMIN';
+import { SDK } from '../sdk';
+
+export type Roles = 'USER' | 'ANON';
 
 export type UserSession = {
-  role: Roles | null;
+  role: Roles;
+  avatarUrl: string;
+  userName: string;
+};
+
+export type AuthProps = {
+  privateToken: string;
+};
+
+export const logIn = ({ privateToken }: AuthProps): Promise<UserSession> => {
+  return SDK.getSessionInteractor()
+    .loginOnCustomServer('https://gitlab.com/', privateToken)
+    .then(() => {
+      const {
+        avatarUrl,
+        userName,
+      } = SDK.getSessionInteractor().getCurrentUserAccount();
+
+      return {
+        role: 'USER',
+        userName,
+        avatarUrl,
+      };
+    });
 };
 
 export type Credentials = {
@@ -21,10 +46,4 @@ export const logOut = (): Promise<void> =>
   request({
     method: 'get',
     url: '/user/logout',
-  });
-
-export const logIn = (): Promise<void> =>
-  request({
-    method: 'post',
-    url: '/user/login',
   });

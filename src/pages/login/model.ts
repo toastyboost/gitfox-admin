@@ -1,27 +1,20 @@
 import { createEvent, sample, guard, forward } from 'effector';
 import { createInput, createForm } from 'effector-form';
 
-import { Credentials } from 'api/user';
+import { AuthProps } from 'api/user';
 import { logIn } from 'features/user';
-
-import { loginValidator, passValidator } from 'lib/validators';
 
 export const submitForm = createEvent<void>();
 export const resetForm = createEvent<void>();
 
 export const loginStore = createInput({
-  name: 'email',
-  validator: loginValidator,
+  name: 'privateToken',
+  initialValue: 'dLsY5vsuzohLMFMxzWeh',
 });
 
-export const passStore = createInput({
-  name: 'password',
-  validator: passValidator,
-});
-
-export const loginForm = createForm<Credentials>({
+export const loginForm = createForm<AuthProps>({
   name: 'loginForm',
-  fields: [loginStore, passStore],
+  fields: [loginStore],
   submit: submitForm,
   reset: resetForm,
 });

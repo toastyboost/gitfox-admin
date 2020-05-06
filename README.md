@@ -1,4 +1,7 @@
-# Web Admin starter
+# Gitfox Admin
+
+`yarn` - install dependencies
+`yarn start` - run dev server
 
 ## Features
 
@@ -11,13 +14,3 @@
 - [x] React, React Router
 - [x] Effector
 - [x] Router-Guards
-
-## Layout
-
-- [x] Login form
-
-## TODO
-
-- [ ] Update TS config
-- [ ] Add table boilerplate
-- [ ] Add UID to requests

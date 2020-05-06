@@ -10,14 +10,23 @@ type LogoProps = {
 export const Logo: React.FC<LogoProps> = ({ to, icon }) => {
   return (
     <LogoContanter to={to}>
-      {icon} WEB
+      {icon} <span className="logo-text">GitFox</span>
     </LogoContanter>
   )
 }
 
 const LogoContanter = styled(Link)`
-  text-transform: uppercase;
   font-weight: 900;
-  position: relative;
   color: #fff;
-`
+
+  .anticon-gitlab {
+    bottom: -4px;
+    position: relative;
+  }
+
+  .logo-text {
+    position: relative;
+    bottom: -1px;
+    margin-left: 12px;
+  }
+`;
